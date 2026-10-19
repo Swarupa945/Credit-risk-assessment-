@@ -1,4 +1,4 @@
-# 🛡️ CredGuard — Precision Default Risk Engine
+# 🛡️ CredGuard — Next-gen Credit Risk Intelligence
 
 CredGuard is a production-ready machine learning web application built with **FastAPI**, **Scikit-Learn**, and a modern **Neo-Banking UI**. It evaluates customer loan applications in real-time, predicting default probability against an optimized classification threshold.
 
