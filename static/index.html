@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CredPulse | AI Credit Risk Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-glow"></div>
+    <header class="navbar">
+        <div class="logo">
+            <div class="logo-icon-wrapper">
+                <span class="logo-icon">🛡️</span>
+            </div>
+            <div class="logo-text">
+                <h1>Cred<span>Guard</span></h1>
+                <div class="logo-badge">PRO</div>
+            </div>
+        </div>
+        <div class="navbar-divider"></div>
+        <p class="subtitle">Next-gen Credit Risk Intelligence</p>
+    </header>
+
+    <main class="container">
+        <section class="card form-section">
+            <h2>Loan Application Details</h2>
+            <p class="section-desc">Provide applicant parameters to instantly calculate default probability.</p>
+            
+            <form id="loanForm">
+                <div class="grid">
+                    <div class="input-group">
+                        <label for="person_age">Age</label>
+                        <input type="number" id="person_age" required placeholder="e.g. 28" min="18" max="100">
+                    </div>
+                    <div class="input-group">
+                        <label for="person_income">Annual Income ($)</label>
+                        <input type="number" id="person_income" required placeholder="e.g. 65000" step="100">
+                    </div>
+                    <div class="input-group">
+                        <label for="person_home_ownership">Home Ownership</label>
+                        <select id="person_home_ownership" required>
+                            <option value="" disabled selected>Select status</option>
+                            <option value="RENT">Rent</option>
+                            <option value="MORTGAGE">Mortgage</option>
+                            <option value="OWN">Own</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="person_emp_length">Employment Length (Years)</label>
+                        <input type="number" id="person_emp_length" required placeholder="e.g. 3.5" step="0.1" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="loan_intent">Loan Intent</label>
+                        <select id="loan_intent" required>
+                            <option value="" disabled selected>Select intent</option>
+                            <option value="PERSONAL">Personal</option>
+                            <option value="EDUCATION">Education</option>
+                            <option value="MEDICAL">Medical</option>
+                            <option value="VENTURE">Venture</option>
+                            <option value="HOMEIMPROVEMENT">Home Improvement</option>
+                            <option value="DEBTCONSOLIDATION">Debt Consolidation</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="loan_grade">Loan Grade</label>
+                        <select id="loan_grade" required>
+                            <option value="" disabled selected>Select grade</option>
+                            <option value="A">Grade A</option>
+                            <option value="B">Grade B</option>
+                            <option value="C">Grade C</option>
+                            <option value="D">Grade D</option>
+                            <option value="E">Grade E</option>
+                            <option value="F">Grade F</option>
+                            <option value="G">Grade G</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="loan_amnt">Loan Amount ($)</label>
+                        <input type="number" id="loan_amnt" required placeholder="e.g. 15000" step="100">
+                    </div>
+                    <div class="input-group">
+                        <label for="loan_int_rate">Interest Rate (%)</label>
+                        <input type="number" id="loan_int_rate" required placeholder="e.g. 11.5" step="0.01" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="loan_percent_income">Loan % of Income</label>
+                        <input type="number" id="loan_percent_income" required placeholder="e.g. 0.23" step="0.01" min="0" max="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="cb_person_default_on_file">Default on File</label>
+                        <select id="cb_person_default_on_file" required>
+                            <option value="" disabled selected>Select option</option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="cb_person_cred_hist_length">Credit History Length (Years)</label>
+                        <input type="number" id="cb_person_cred_hist_length" required placeholder="e.g. 4" min="0">
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn" class="primary-btn">
+                    <span>Evaluate Risk</span>
+                    <div class="loader" id="btnLoader" style="display: none;"></div>
+                </button>
+            </form>
+        </section>
+
+        <!-- Result Section (Hidden by default) -->
+        <section id="resultSection" class="card result-section hidden">
+            <h2>Assessment Results</h2>
+            <div class="result-card-inner" id="resultCardInner">
+                <div class="result-badge" id="resultBadge">Low Risk</div>
+                <div class="metric-container">
+                    <div class="metric">
+                        <span class="metric-label">Default Probability</span>
+                        <span class="metric-value" id="probValue">0.00%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Model Threshold</span>
+                        <span class="metric-value" id="thresholdValue">0.00</span>
+                    </div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
